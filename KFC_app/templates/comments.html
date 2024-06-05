@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Comments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .filters select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .comment {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .comment:last-child {
+            border-bottom: none;
+        }
+        .comment strong {
+            display: block;
+        }
+        .back-button {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-button button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .back-button button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>All Comments</h2>
+        <div class="filters">
+            <form method="GET" action="/comments">
+                <label for="sort">Sort by Date:</label>
+                <select name="sort" id="sort">
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                </select>
+
+                <label for="label">Filter by Label:</label>
+                <select name="label" id="label">
+                    <option value="all">All</option>
+                    <option value="Positive">Positive</option>
+                    <option value="Neutral">Neutral</option>
+                    <option value="Negative">Negative</option>
+                </select>
+
+                <label for="location">Filter by Location:</label>
+                <select name="location" id="location">
+                    <option value="all">All</option>
+                    <option value="KFC Sơn Tây">KFC Sơn Tây</option>
+                    <option value="KFC Hà Đông">KFC Hà Đông</option>
+                    <option value="KFC Long Biên">KFC Long Biên</option>
+                    <option value="KFC Bà Triệu">KFC Bà Triệu</option>
+                    <option value="KFC Bạch Mai">KFC Bạch Mai</option>
+                    <option value="Big C Hồ Gươm Plaza">Big C Hồ Gươm Plaza</option>
+                    <option value="Big C Savico">Big C Savico</option>
+                    <option value="KFC Cầu Giấy">KFC Cầu Giấy</option>
+                    <option value="KFC Đình Công">KFC Đình Công</option>
+                    <option value="KFC Ebest Mall">KFC Ebest Mall</option>
+                    <option value="KFC Hoàn Kiếm">KFC Hoàn Kiếm</option>
+                    <option value="KFC Hoàng Quốc Việt">KFC Hoàng Quốc Việt</option>
+                    <option value="KFC Lạc Long Quân">KFC Lạc Long Quân</option>
+                    <option value="KFC Lan Chi Mart Phú Xuyên">KFC Lan Chi Mart Phú Xuyên</option>
+                    <option value="KFC Láng Hạ">KFC Láng Hạ</option>
+                    <option value="KFC Lê Thanh Nghị">KFC Lê Thanh Nghị</option>
+                    <option value="KFC Linh Đàm">KFC Linh Đàm</option>
+                    <option value="KFC Lotte Mart Đống Da">KFC Lotte Mart Đống Da</option>
+                    <option value="KFC Mê Linh Hà Đông">KFC Mê Linh Hà Đông</option>
+                    <option value="KFC Nguyễn Thái Học">KFC Nguyễn Thái Học</option>
+                    <option value="KFC Nguyễn Văn Huyên">KFC Nguyễn Văn Huyên</option>
+                    <option value="KFC Nguyễn Cơ Thạch">KFC Nguyễn Cơ Thạch</option>
+                    <option value="KFC Quang Trung Hà Đông">KFC Quang Trung Hà Đông</option>
+                    <option value="KFC Royal City Mega Mall">KFC Royal City Mega Mall</option>
+                    <option value="KFC Tam Trinh">KFC Tam Trinh</option>
+                    <option value="KFC Tây Sơn">KFC Tây Sơn</option>
+                    <option value="KFC The Manor Hà Nội">KFC The Manor Hà Nội</option>
+                    <option value="KFC Trạm Trôi">KFC Trạm Trôi</option>
+                    <option value="KFC Trung Hòa">KFC Trung Hòa</option>
+                    <option value="KFC Trương Định Plaza">KFC Trương Định Plaza</option>
+                    <option value="KFC Vincom Bắc Từ Liêm">KFC Vincom Bắc Từ Liêm</option>
+                    <option value="KFC Vincom Ocean Park">KFC Vincom Ocean Park</option>
+                    <option value="KFC Xa La Hà Nội">KFC Xa La Hà Nội</option>
+                    <option value="KFC Yên Phụ">KFC Yên Phụ</option>
+                    <option value="KFC Mỹ Đình">KFC Mỹ Đình</option>
+                </select>
+
+                <button type="submit">Apply</button>
+            </form>
+        </div>
+        {% for review in reviews %}
+        <div class="comment">
+            <strong>Reviewer:</strong> {{ review[0] }}<br>
+            <strong>Location:</strong> {{ review[1] }}<br>
+            <strong>Service Rating:</strong> {{ review[2] }} stars<br>
+            <strong>Staff Rating:</strong> {{ review[3] }} stars<br>
+            <strong>Food Rating:</strong> {{ review[4] }} stars<br>
+            <strong>Drinks Rating:</strong> {{ review[5] }} stars<br>
+            <strong>Comment:</strong> {{ review[6] }}<br>
+            <strong>Date:</strong> {{ review[7] }}<br>
+            <strong>Predicted Label:</strong> {{ review[8] }}<br>
+        </div>
+        {% endfor %}
+        <div class="back-button">
+            <form action="/">
+                <button type="submit">Quay trở lại trang review</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

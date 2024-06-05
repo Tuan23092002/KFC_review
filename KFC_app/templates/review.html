@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFC Chicken Review</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: #ffe6e6;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            color: #ff6600;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #333;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #e65c00;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffcccc;
+            border: 1px solid #ff9999;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+        }
+        .header-image {
+            display: block;
+            margin: 0 auto 20px;
+            width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='KFC.jpeg') }}" alt="KFC Logo" class="header-image">
+        <h2>KFC Chicken Review</h2>
+        <form action="/submit" method="post">
+            <label for="reviewer">Name:</label>
+            <input type="text" id="reviewer" name="reviewer" placeholder="Enter your name">
+            <label for="location">Location:</label>
+            <select id="location" name="location">
+                <option value="KFC Sơn Tây">KFC Sơn Tây</option>
+                <option value="KFC Hà Đông">KFC Hà Đông</option>
+                <option value="KFC Long Biên">KFC Long Biên</option>
+                <option value="KFC Bà Triệu">KFC Bà Triệu</option>
+                <option value="KFC Bạch Mai">KFC Bạch Mai</option>
+                <option value="Big C Hồ Gươm Plaza">Big C Hồ Gươm Plaza</option>
+                <option value="Big C Savico">Big C Savico</option>
+                <option value="KFC Cầu Giấy">KFC Cầu Giấy</option>
+                <option value="KFC Đình Công">KFC Đình Công</option>
+                <option value="KFC Ebest Mall">KFC Ebest Mall</option>
+                <option value="KFC Hoàn Kiếm">KFC Hoàn Kiếm</option>
+                <option value="KFC Hoàng Quốc Việt">KFC Hoàng Quốc Việt</option>
+                <option value="KFC Lạc Long Quân">KFC Lạc Long Quân</option>
+                <option value="KFC Lan Chi Mart Phú Xuyên">KFC Lan Chi Mart Phú Xuyên</option>
+                <option value="KFC Láng Hạ">KFC Láng Hạ</option>
+                <option value="KFC Lê Thanh Nghị">KFC Lê Thanh Nghị</option>
+                <option value="KFC Linh Đàm">KFC Linh Đàm</option>
+                <option value="KFC Lotte Mart Đống Da">KFC Lotte Mart Đống Da</option>
+                <option value="KFC Mê Linh Hà Đông">KFC Mê Linh Hà Đông</option>
+                <option value="KFC Nguyễn Thái Học">KFC Nguyễn Thái Học</option>
+                <option value="KFC Nguyễn Văn Huyên">KFC Nguyễn Văn Huyên</option>
+                <option value="KFC Nguyễn Cơ Thạch">KFC Nguyễn Cơ Thạch</option>
+                <option value="KFC Quang Trung Hà Đông">KFC Quang Trung Hà Đông</option>
+                <option value="KFC Royal City Mega Mall">KFC Royal City Mega Mall</option>
+                <option value="KFC Tam Trinh">KFC Tam Trinh</option>
+                <option value="KFC Tây Sơn">KFC Tây Sơn</option>
+                <option value="KFC The Manor Hà Nội">KFC The Manor Hà Nội</option>
+                <option value="KFC Trạm Trôi">KFC Trạm Trôi</option>
+                <option value="KFC Trung Hòa">KFC Trung Hòa</option>
+                <option value="KFC Trương Định Plaza">KFC Trương Định Plaza</option>
+                <option value="KFC Vincom Bắc Từ Liêm">KFC Vincom Bắc Từ Liêm</option>
+                <option value="KFC Vincom Ocean Park">KFC Vincom Ocean Park</option>
+                <option value="KFC Xa La Hà Nội">KFC Xa La Hà Nội</option>
+                <option value="KFC Yên Phụ">KFC Yên Phụ</option>
+                <option value="KFC Mỹ Đình">KFC Mỹ Đình</option>
+            </select>
+            <label for="service">Service Rating:</label>
+            <select id="service" name="service">
+                <option value="1">1 star</option>
+                <option value="2">2 stars</option>
+                <option value="3">3 stars</option>
+                <option value="4">4 stars</option>
+                <option value="5">5 stars</option>
+            </select>
+            <label for="staff">Staff Rating:</label>
+            <select id="staff" name="staff">
+                <option value="1">1 star</option>
+                <option value="2">2 stars</option>
+                <option value="3">3 stars</option>
+                <option value="4">4 stars</option>
+                <option value="5">5 stars</option>
+            </select>
+            <label for="food">Food Rating:</label>
+            <select id="food" name="food">
+                <option value="1">1 star</option>
+                <option value="2">2 stars</option>
+                <option value="3">3 stars</option>
+                <option value="4">4 stars</option>
+                <option value="5">5 stars</option>
+            </select>
+            <label for="drinks">Drinks Rating:</label>
+            <select id="drinks" name="drinks">
+                <option value="1">1 star</option>
+                <option value="2">2 stars</option>
+                <option value="3">3 stars</option>
+                <option value="4">4 stars</option>
+                <option value="5">5 stars</option>
+            </select>
+            <label for="comment">Comment:</label>
+            <textarea id="comment" name="comment" rows="4" placeholder="Enter your comment"></textarea>
+            <button type="submit">Submit Review</button>
+        </form>
+        <div class="comments-button">
+            <form action="/comments">
+                <button type="submit">Previous comments</button>
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+</body>
+</html>

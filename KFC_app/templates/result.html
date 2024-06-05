@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: #ffe6e6;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            color: #ff6600;
+        }
+        .review-result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffcccc;
+            border: 1px solid #ff9999;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+        }
+        .back-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-button button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #ff6600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .back-button button:hover {
+            background-color: #e65c00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Review Result</h2>
+        <div class="review-result">
+            <strong>Reviewer:</strong> {{ result.reviewer }}<br>
+            <strong>Location:</strong> {{ result.location }}<br>
+            <strong>Service Rating:</strong> {{ result.service }} stars<br>
+            <strong>Staff Rating:</strong> {{ result.staff }} stars<br>
+            <strong>Food Rating:</strong> {{ result.food }} stars<br>
+            <strong>Drinks Rating:</strong> {{ result.drinks }} stars<br>
+            <strong>Comment:</strong> {{ result.comment }}<br>
+        </div>
+        <div class="back-button">
+            <form action="/">
+                <button type="submit">Quay trở lại trang review</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
